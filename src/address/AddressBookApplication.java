@@ -3,11 +3,16 @@ package address;
 import address.data.AddressBook;
 import address.data.AddressEntry;
 
+import java.io.*;
+
 /**
  * main AddressBookApplication: invoke some methods of the Menu class.
 **/
 public class AddressBookApplication
 {
+    /**
+     * Test out features of AddressBook.
+     */
     public static void main(String[] args)
     {
         AddressBook ab = new AddressBook();
@@ -35,6 +40,49 @@ public class AddressBookApplication
         ab.add(ae1);
         ab.add(ae2);
 
+        init("AddressInputDataFile.txt", ab);
         ab.list();
+    }
+
+    /**
+     * Initialize address book from file source.
+     *
+     * Assumes: variable number of complete contact entries.
+     *
+     * @param filename Filename of file on disk.
+     * @param ab AddressBook instance to add parsed entries to.
+     *
+     * @author Arshdeep Padda
+     * @since v0.3
+     */
+    static void init (String filename, AddressBook ab)
+    {
+        try {
+            BufferedReader file = new BufferedReader(
+                    new FileReader(filename)
+            );
+            String line;
+            while ((line = file.readLine()) != null)
+            {
+                if (line.equals("")) continue;
+                ab.add(
+                        new AddressEntry(
+                                line,
+                                file.readLine(),
+                                file.readLine(),
+                                file.readLine(),
+                                file.readLine(),
+                                file.readLine(),
+                                file.readLine(),
+                                file.readLine()
+                        )
+                );
+            }
+        } catch (IOException e)
+        {
+            System.out.print("Unable to open specified file: ");
+            System.out.println(filename);
+            System.exit(99);
+        }
     }
 }

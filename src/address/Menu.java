@@ -3,8 +3,11 @@ package address;
 import java.util.Scanner;
 
 /**
- * Menu class currently only has static methods to prompt to standard output
- * information about a Contact like name, etc.
+ * Menu class prompts user for input for various Contact field parameters,
+ * e.g. name, address, etc.
+ *
+ * @author Arshdeep Padda
+ * @since v0
 **/
 public class Menu
 {
@@ -12,7 +15,9 @@ public class Menu
     private final Scanner scanner;
 
     /**
-     * Set scanner.
+     * Set up Menu by setting up scanner.
+     * @author Arshdeep Padda
+     * @since v0
     */
     Menu()
     {
@@ -26,6 +31,9 @@ public class Menu
      *
      * @param query - Query to prompt user.
      * @return String - User response.
+     *
+     * @author Arshdeep Padda
+     * @since v0
     */
     public String prompt(String query)
     {
@@ -36,6 +44,9 @@ public class Menu
     /**
      * Prompt user for first name.
      * @return String - User input.
+     *
+     * @author Arshdeep Padda
+     * @since v0
     */
     public String prompt_FirstName()
     {
@@ -45,6 +56,9 @@ public class Menu
     /**
      * Prompt user for last name.
      * @return String - User input.
+     *
+     * @author Arshdeep Padda
+     * @since v0
     */
     public String prompt_LastName()
     {
@@ -54,6 +68,9 @@ public class Menu
     /**
      * Prompt user for street.
      * @return String - User input.
+     *
+     * @author Arshdeep Padda
+     * @since v0
     */
     public String prompt_Street()
     {
@@ -63,6 +80,9 @@ public class Menu
     /**
      * Prompt user for city.
      * @return String - User input.
+     *
+     * @author Arshdeep Padda
+     * @since v0
     */
     public String prompt_City()
     {
@@ -72,6 +92,9 @@ public class Menu
     /**
      * Prompt user for state.
      * @return String - User input.
+     *
+     * @author Arshdeep Padda
+     * @since v0
     */
     public String prompt_State()
     {
@@ -81,6 +104,9 @@ public class Menu
     /**
      * Prompt user for zip.
      * @return String - User input.
+     *
+     * @author Arshdeep Padda
+     * @since v0
     */
     public String prompt_Zip()
     {
@@ -90,6 +116,9 @@ public class Menu
     /**
      * Prompt user for telephone.
      * @return String - User input.
+     *
+     * @author Arshdeep Padda
+     * @since v0
     */
     public String prompt_Telephone()
     {
@@ -99,6 +128,9 @@ public class Menu
     /**
      * Prompt user for email.
      * @return String - User input.
+     *
+     * @author Arshdeep Padda
+     * @since v0
     */
     public String prompt_Email()
     {
