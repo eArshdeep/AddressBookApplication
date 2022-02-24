@@ -60,8 +60,10 @@ public final class AddressBook
      */
     public void list()
     {
+        int n = 1;
         for (Map.Entry<String, AddressEntry> entry : this.addressEntryList.entrySet())
         {
+            System.out.print(n++); System.out.print(") ");
             System.out.println(entry.getValue());
             System.out.println();
         }

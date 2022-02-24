@@ -4,7 +4,7 @@ package address.data;
  * AddressEntry represents singular address / contact entry.
  *
  * It includes fields such as: First name, last name,
- * street, city, state, and ZIP, email, and phone.
+ * street, city, state, and ZIP, phone, and email.
  *
  * @author Arshdeep Padda
  * @since v0.1
@@ -25,10 +25,10 @@ public class AddressEntry
     private String state;
     /** ZIP. */
     private Integer zip;
-    /** Phone. */
-    private String phone;
     /** Email. */
     private String email;
+    /** Phone. */
+    private String phone;
 
     /* Constructors */
 
@@ -59,14 +59,14 @@ public class AddressEntry
      * @param city City
      * @param state State
      * @param zip ZIP
-     * @param phone Phone
      * @param email Email
+     * @param phone Phone
      */
     public AddressEntry
     (
         String firstName, String lastName,
         String street, String city, String state, Integer zip,
-        String phone, String email
+        String email, String phone
     )
     {
         this.firstName = firstName;
@@ -75,8 +75,8 @@ public class AddressEntry
         this.city = city;
         this.state = state;
         this.zip = zip;
-        this.phone = phone;
         this.email = email;
+        this.phone = phone;
     }
 
     /* Methods */
@@ -96,8 +96,8 @@ public class AddressEntry
           this.city,
           this.state,
           this.zip,
-          this.phone,
-          this.email
+          this.email,
+          this.phone
         );
     }
 
@@ -108,8 +108,8 @@ public class AddressEntry
      *      First Last
      *      Street
      *      City, State, ZIP
-     *      Email
      *      Phone
+     *      Email
      *
      * @return String representation of present AddressEntry.
      *
