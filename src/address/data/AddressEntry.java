@@ -82,6 +82,26 @@ public class AddressEntry
     /* Methods */
 
     /**
+     * Copy present instance and return new object with same properties.
+     * @return New AddressEntry object that is copied of this instance.
+     * @author Arshdeep Padda
+     * @since v0.6
+     */
+    public AddressEntry getCopy()
+    {
+        return new AddressEntry(
+          this.firstName,
+          this.lastName,
+          this.street,
+          this.city,
+          this.state,
+          this.zip,
+          this.phone,
+          this.email
+        );
+    }
+
+    /**
      * Returns string representation of contact.
      *
      * All 8 fields of contact over 5 lines.

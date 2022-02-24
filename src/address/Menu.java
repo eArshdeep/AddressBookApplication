@@ -1,5 +1,8 @@
 package address;
 
+import address.data.AddressBook;
+import address.data.AddressEntry;
+
 import java.util.Scanner;
 
 /**
@@ -13,6 +16,9 @@ public class Menu
 {
     /** Scanner for IO. */
     private static final Scanner scanner = new Scanner(System.in);
+
+    /** AddressBook Singleton */
+    private static AddressBook ab = AddressBook.getInstance();
 
     /**
      * @author Arshdeep Padda
@@ -208,4 +214,110 @@ public class Menu
         }
         return choice;
     }
+
+    /**
+     * Prompt user for filename and call init on ab.
+     *
+     * @author Arshdeep Padda
+     * @since v0.6
+     */
+    public static void load()
+    {
+        ab.init(Menu.prompt("Filename: "));
+    }
+
+    /**
+     * Prompt user for contact addition and call add on ab.
+     * All fields of contact are requested from user.
+     *
+     * @author Arshdeep Padda
+     * @since v0.6
+     */
+    public static void add()
+    {
+        ab.add(
+                new AddressEntry(
+                        Menu.prompt_FirstName(),
+                        Menu.prompt_LastName(),
+                        Menu.prompt_Street(),
+                        Menu.prompt_City(),
+                        Menu.prompt_State(),
+                        Menu.prompt_Zip(),
+                        Menu.prompt_Email(),
+                        Menu.prompt_Phone()
+                )
+        );
+    }
+
+    /**
+     * Prompt user for search of user to remove, show contact results of
+     * search, and perform deletion based on user contact selection.
+     *
+     * @author Arshdeep Padda
+     * @since v0.6
+     */
+    public static void remove()
+    {
+        String name = Menu.prompt("Last Name to Remove: ");
+        AddressEntry[] contacts = ab.find(name);
+        for (int i=0; i<contacts.length; i++)
+        {
+            System.out.print(i+1);
+            System.out.print(") ");
+            System.out.println(contacts[i]);
+        }
+        Integer choice = Menu.promptInteger("Remove: ");
+        if (choice < 1 || choice > contacts.length)
+        {
+            System.out.println("Invalid deletion choice.");
+            return;
+        }
+        ab.remove(contacts[choice-1]);
+    }
+
+    /**
+     * Prompt user for search query of last name to search contact store,
+     * then display all contacts with last names starting with query as prefix.
+     *
+     * @author Arshdeep Padda
+     * @since v0.6
+     */
+    public static void find()
+    {
+        String qname = Menu.prompt("Last name to search for: ");
+        AddressEntry[] results = ab.find(qname);
+        for (int i=0; i<results.length; i++)
+        {
+            System.out.print(i+1);
+            System.out.print(") ");
+            System.out.println(results[i]);
+        }
+    }
+
+    /**
+     * List all contacts.
+     *
+     * @author Arshdeep Padda
+     * @since v0.6
+     */
+    public static void list()
+    {
+        System.out.println("\nListing all contacts:");
+        ab.list();
+    }
+
+    /**
+     * Report exit and exit with code zero.
+     *
+     * Peaceful exit processes, e.g. saving, can be implemented here.
+     *
+     * @author Arshdeep Padda
+     * @since v0.6
+     */
+    public static void exit()
+    {
+        System.out.println("Exiting application...");
+        System.exit(0);
+    }
+
 }

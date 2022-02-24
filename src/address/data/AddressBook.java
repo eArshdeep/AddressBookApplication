@@ -10,11 +10,37 @@ import java.util.*;
 /**
  * AddressBook represents book of address entries.
  *
+ * This class is implemented as a singleton since `v0.6`.
+ *
  * @author Arshdeep Padda
  * @since v0.1
  */
-public class AddressBook
+public final class AddressBook
 {
+    /* Singleton */
+
+    /** Singular AddressBook Instance */
+    private static AddressBook INSTANCE;
+
+    /** Private Constructor */
+    private AddressBook ()
+    {
+
+    }
+
+    /**
+     * Return singular instance of AddressBook.
+     *
+     * One is created if not already instantiated.
+     *
+     * @return Singleton AddressBook instance
+     */
+    public static AddressBook getInstance()
+    {
+        if (INSTANCE == null) INSTANCE = new AddressBook();
+        return INSTANCE;
+    }
+
     /* Fields */
 
     /**
@@ -79,8 +105,13 @@ public class AddressBook
         NavigableMap<String, AddressEntry> range = addressEntryList.subMap(
                 lastname, true, toKey, false
         );
-
-        return range.values().toArray(new AddressEntry[0]);
+        ArrayList<AddressEntry> contacts = new ArrayList<>();
+        for (Map.Entry<String, AddressEntry> entry : range.entrySet())
+        {
+            if (entry.getValue().getLastName().startsWith(lastname))
+                contacts.add( entry.getValue().getCopy() );
+        }
+        return contacts.toArray(new AddressEntry[0]);
     }
 
     /**

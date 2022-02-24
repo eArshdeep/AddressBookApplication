@@ -1,80 +1,48 @@
 package address;
 
-import address.data.AddressBook;
-import address.data.AddressEntry;
-
-import java.io.*;
+import address.data.*;
 
 /**
+ * Address Book Application
+ *
+ * Sets up loop for program. User is prompted for via Menu,
+ * and Menu user choice handlers are fired.
+ *
  * @author Arshdeep Padda
 **/
 public class AddressBookApplication
 {
     /**
-     * Test out features of AddressBook.
+     * Start program loop and prompt user for input via Menu.
      */
     public static void main(String[] args)
     {
-        AddressBook ab = new AddressBook();
-        ab.init("AddressInputDataFile.txt");
+        AddressBook ab = AddressBook.getInstance();
+        ab.init("AddressInputDataFile.txt"); // TODO: remove
 
         String input = Menu.displayMenu();
-
         while (!input.equals("f"))
         {
             switch (input.charAt(0))
             {
-                case 97:
-                    ab.init(Menu.prompt("Filename: "));
+                case 97: // a, load
+                    Menu.load();
                     break;
-                case 98:
-                    ab.add(
-                            new AddressEntry(
-                                    Menu.prompt_FirstName(),
-                                    Menu.prompt_LastName(),
-                                    Menu.prompt_Street(),
-                                    Menu.prompt_City(),
-                                    Menu.prompt_State(),
-                                    Menu.prompt_Zip(),
-                                    Menu.prompt_Email(),
-                                    Menu.prompt_Phone()
-                            )
-                    );
+                case 98: // b, add
+                    Menu.add();
                     break;
-                case 99:
-                    String name = Menu.prompt("Last Name to Remove: ");
-                    AddressEntry[] contacts = ab.find(name);
-                    for (int i=0; i<contacts.length; i++)
-                    {
-                        System.out.print(i+1);
-                        System.out.print(") ");
-                        System.out.println(contacts[i]);
-                    }
-                    Integer choice = Menu.promptInteger("Remove: ");
-                    if (choice < 1 || choice > contacts.length)
-                    {
-                        System.out.println("Invalid deletion choice.");
-                        break;
-                    }
-                    ab.remove(contacts[choice-1]);
+                case 99: // c, remove
+                    Menu.remove();
                     break;
-                case 100:
-                    String qname = Menu.prompt("Last name to search for: ");
-                    AddressEntry[] results = ab.find(qname);
-                    for (int i=0; i<results.length; i++)
-                    {
-                        System.out.print(i+1);
-                        System.out.print(") ");
-                        System.out.println(results[i]);
-                    }
+                case 100: // d, find
+                    Menu.find();
                     break;
-                case 101:
-                    System.out.println("\nListing all contacts.");
-                    ab.list();
+                case 101: // e list
+                    Menu.list();
                     break;
             }
-
             input = Menu.displayMenu();
         }
+        Menu.exit();
     }
 }
