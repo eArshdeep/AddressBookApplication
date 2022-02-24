@@ -3,6 +3,9 @@ package address.data;
 /**
  * AddressEntry represents singular address / contact entry.
  *
+ * It includes fields such as: First name, last name,
+ * street, city, state, and ZIP, email, and phone.
+ *
  * @author Arshdeep Padda
  * @since v0.1
  */
@@ -21,7 +24,7 @@ public class AddressEntry
     /** State. */
     private String state;
     /** ZIP. */
-    private String zip;
+    private Integer zip;
     /** Phone. */
     private String phone;
     /** Email. */
@@ -37,14 +40,14 @@ public class AddressEntry
      */
     public AddressEntry()
     {
-        this.firstName = "";
-        this.lastName = "";
-        this.street = "";
-        this.city = "";
-        this.state = "";
-        this.zip = "";
-        this.email = "";
-        this.phone = "";
+        this.firstName = null;
+        this.lastName = null;
+        this.street = null;
+        this.city = null;
+        this.state = null;
+        this.zip = 0;
+        this.email = null;
+        this.phone = null;
     }
 
     /**
@@ -62,13 +65,14 @@ public class AddressEntry
     public AddressEntry
     (
         String firstName, String lastName,
-        String street, String city, String state, String zip,
+        String street, String city, String state, Integer zip,
         String phone, String email
     )
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
+        this.city = city;
         this.state = state;
         this.zip = zip;
         this.phone = phone;
@@ -78,15 +82,14 @@ public class AddressEntry
     /* Methods */
 
     /**
-     * Retrun string representation of contact.
+     * Returns string representation of contact.
      *
      * All 8 fields of contact over 5 lines.
-     *
-     *      F L
-     *      St
-     *      Ct, St, ZIP
-     *      Em
-     *      Ph
+     *      First Last
+     *      Street
+     *      City, State, ZIP
+     *      Email
+     *      Phone
      *
      * @return String representation of present AddressEntry.
      *
@@ -197,7 +200,7 @@ public class AddressEntry
      * Get ZIP.
      * @return ZIP.
      */
-    public String getZip()
+    public Integer getZip()
     {
         return zip;
     }
@@ -206,7 +209,7 @@ public class AddressEntry
      * Set ZIP.
      * @param zip ZIP.
      */
-    public void setZip(String zip)
+    public void setZip(Integer zip)
     {
         this.zip = zip;
     }
