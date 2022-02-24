@@ -2,6 +2,7 @@ package tests;
 
 import address.data.AddressBook;
 import address.data.AddressEntry;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -21,6 +22,7 @@ class AddressBookTest
     }
 
     @Test
+    @Order(4)
     void list()
     {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -55,13 +57,115 @@ class AddressBookTest
 
         final String outString = out.toString();
 
+        String expected = "1) Marcus Gaius\n" +
+                "12 Frank Ave\n" +
+                "Union City, CA 94112\n" +
+                "gm@gmail.com\n" +
+                "301-313-2211\n" +
+                "\n" +
+                "2) Bob Janner\n" +
+                "993 Bicker Ave\n" +
+                "San Leandro, CA 94513\n" +
+                "bjanner@hotmail.com\n" +
+                "300-312-4999\n" +
+                "\n" +
+                "3) Gaius Julius\n" +
+                "1 Round Way\n" +
+                "Sausalito, CA 94199\n" +
+                "gjul@icloud.com\n" +
+                "133-311-4812\n" +
+                "\n" +
+                "4) Jackson Oz\n" +
+                "3112 Janners Ave\n" +
+                "Fremont, CA 94536\n" +
+                "joz@gmail.com\n" +
+                "514-331-1499\n" +
+                "\n" +
+                "5) Bob Pius\n" +
+                "123 Main St\n" +
+                "Hayward, CA 94500\n" +
+                "bmar@gmail.com\n" +
+                "1234441222\n" +
+                "\n" +
+                "6) Jay S\n" +
+                "912 Om Way\n" +
+                "Fremont, CA 94531\n" +
+                "jays@gmail.com\n" +
+                "123-333-1222\n" +
+                "\n" +
+                "7) Akash Sing\n" +
+                "11231 Fremont Way\n" +
+                "Fremont, CA 94513\n" +
+                "asing@school.edu\n" +
+                "513-312-0931\n" +
+                "\n" +
+                "8) John Singh\n" +
+                "741 My Way\n" +
+                "Fremont, CA 93122\n" +
+                "jsingh@icloud.com\n" +
+                "3123312233\n" +
+                "\n" +
+                "1) Marcus Gaius\n" +
+                "12 Frank Ave\n" +
+                "Union City, CA 94112\n" +
+                "gm@gmail.com\n" +
+                "301-313-2211\n" +
+                "\n" +
+                "2) Bob Janner\n" +
+                "993 Bicker Ave\n" +
+                "San Leandro, CA 94513\n" +
+                "bjanner@hotmail.com\n" +
+                "300-312-4999\n" +
+                "\n" +
+                "3) Gaius Julius\n" +
+                "1 Round Way\n" +
+                "Sausalito, CA 94199\n" +
+                "gjul@icloud.com\n" +
+                "133-311-4812\n" +
+                "\n" +
+                "4) Bob Marius\n" +
+                "123 Main St\n" +
+                "Hayward, CA 94500\n" +
+                "bmar@gmail.com\n" +
+                "1234441222\n" +
+                "\n" +
+                "5) Jackson Oz\n" +
+                "3112 Janners Ave\n" +
+                "Fremont, CA 94536\n" +
+                "joz@gmail.com\n" +
+                "514-331-1499\n" +
+                "\n" +
+                "6) Bob Pius\n" +
+                "123 Main St\n" +
+                "Hayward, CA 94500\n" +
+                "bmar@gmail.com\n" +
+                "1234441222\n" +
+                "\n" +
+                "7) Jay S\n" +
+                "912 Om Way\n" +
+                "Fremont, CA 94531\n" +
+                "jays@gmail.com\n" +
+                "123-333-1222\n" +
+                "\n" +
+                "8) Akash Sing\n" +
+                "11231 Fremont Way\n" +
+                "Fremont, CA 94513\n" +
+                "asing@school.edu\n" +
+                "513-312-0931\n" +
+                "\n" +
+                "9) John Singh\n" +
+                "741 My Way\n" +
+                "Fremont, CA 93122\n" +
+                "jsingh@icloud.com\n" +
+                "3123312233\n\n";
+
         assertEquals(
-                "1) Bob Marius\n123 Main St\nHayward, CA 94500\nbmar@gmail.com\n1234441222\n\n" +
-                        "2) Bob Pius\n123 Main St\nHayward, CA 94500\nbmar@gmail.com\n1234441222\n\n",
+                expected,
                 outString);
     }
 
     @Test
+    @Order(1)
     void add()
     {
         AddressBook ab = AddressBook.getInstance();
@@ -79,6 +183,7 @@ class AddressBookTest
     }
 
     @Test
+    @Order(3)
     void remove()
     {
         AddressBook ab = AddressBook.getInstance();
@@ -106,6 +211,7 @@ class AddressBookTest
     }
 
     @Test
+    @Order(2)
     void find()
     {
         AddressBook ab = AddressBook.getInstance();
@@ -127,6 +233,7 @@ class AddressBookTest
     }
 
     @Test
+    @Order(5)
     void init()
     {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -160,19 +267,24 @@ class AddressBookTest
                 "joz@gmail.com\n" +
                 "514-331-1499\n" +
                 "\n" +
-                "5) Jay S\n" +
+                "5) Bob Pius\n" +
+                "123 Main St\n" +
+                "Hayward, CA 94500\n" +
+                "bmar@gmail.com\n" +
+                "1234441222\n\n" +
+                "6) Jay S\n" +
                 "912 Om Way\n" +
                 "Fremont, CA 94531\n" +
                 "jays@gmail.com\n" +
                 "123-333-1222\n" +
                 "\n" +
-                "6) Akash Sing\n" +
+                "7) Akash Sing\n" +
                 "11231 Fremont Way\n" +
                 "Fremont, CA 94513\n" +
                 "asing@school.edu\n" +
                 "513-312-0931\n" +
                 "\n" +
-                "7) John Singh\n" +
+                "8) John Singh\n" +
                 "741 My Way\n" +
                 "Fremont, CA 93122\n" +
                 "jsingh@icloud.com\n" +

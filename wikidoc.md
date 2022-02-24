@@ -97,3 +97,8 @@ Screenshot may be missing some final commits.
 # Section F: Project Demonstration
 
 See YouTube video [here](https://youtu.be/yDPqay_EmRM).
+
+# Extra: Tests
+
+![AddressBookTest](./assets/test-ab.png)
+![AddressEntryTest](./assets/test-ae.png)
