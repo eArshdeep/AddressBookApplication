@@ -1,24 +1,62 @@
-FNAME
-LNAME
-ST_ADDR
-CITY
-STATE
-ZIP
-EMAIL
-PHONE
-Lynne
-Grewe
-123 3rd Ave
-Hayward
-Ca
-28666
-lynne.grewe@csueastbay.edu
-510-885-4167
-Butch
-Grewe
-Bay Avenue
-Capitoal
-Ca
-99999
-bg@gmail.com
-415-389-1239
+Jackson
+Oz
+3112 Janners Ave
+Fremont
+CA
+94536
+joz@gmail.com
+514-331-1499
+
+Gaius
+Julius
+1 Round Way
+Sausalito
+CA
+94199
+gjul@icloud.com
+133-311-4812
+
+Bob
+Janner
+993 Bicker Ave
+San Leandro
+CA
+94513
+bjanner@hotmail.com
+300-312-4999
+
+Akash
+Sing
+11231 Fremont Way
+Fremont
+CA
+94513
+asing@school.edu
+513-312-0931
+
+Jay
+S
+912 Om Way
+Fremont
+CA
+94531
+jays@gmail.com
+123-333-1222
+
+John
+Singh
+741 My Way
+Fremont
+CA
+93122
+jsingh@icloud.com
+3123312233
+
+Marcus
+Gaius
+12 Frank Ave
+Union City
+CA
+94112
+gm@gmail.com
+301-313-2211
