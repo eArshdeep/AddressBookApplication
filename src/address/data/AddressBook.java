@@ -73,17 +73,12 @@ public class AddressBook
      */
     public AddressEntry[] find(String lastname)
     {
+        if (lastname.length() < 1)
+            return new AddressEntry[] {};
         String toKey = Character.toString(lastname.charAt(0)+1);
         NavigableMap<String, AddressEntry> range = addressEntryList.subMap(
                 lastname, true, toKey, false
         );
-
-        System.out.println("Find:\n");
-        for (Map.Entry<String, AddressEntry> entry : range.entrySet())
-        {
-            System.out.println(entry.getValue());
-            System.out.println();
-        }
 
         return range.values().toArray(new AddressEntry[0]);
     }

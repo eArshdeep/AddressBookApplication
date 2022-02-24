@@ -6,7 +6,7 @@ import address.data.AddressEntry;
 import java.io.*;
 
 /**
- * main AddressBookApplication: invoke some methods of the Menu class.
+ * @author Arshdeep Padda
 **/
 public class AddressBookApplication
 {
@@ -16,28 +16,65 @@ public class AddressBookApplication
     public static void main(String[] args)
     {
         AddressBook ab = new AddressBook();
-        AddressEntry ae1 = new AddressEntry();
-        AddressEntry ae2 = new AddressEntry();
+        ab.init("AddressInputDataFile.txt");
 
-        ae1.setFirstName("Augustus");
-        ae1.setLastName("Daler");
-        ae1.setStreet("123 Paseo St");
-        ae1.setCity("Hayward");
-        ae1.setState("CA");
-        ae1.setZip(Integer.parseInt("94533"));
-        ae1.setEmail("adaler@gmail.com");
-        ae1.setPhone("(514) 231-1233");
+        String input = Menu.displayMenu();
 
-        ae2.setFirstName("Jackson");
-        ae2.setLastName("Oz");
-        ae2.setStreet("123 Main St");
-        ae2.setCity("San Francisco");
-        ae2.setState("CA");
-        ae2.setZip(Integer.parseInt("94413"));
-        ae2.setEmail("joz@gmail.com");
-        ae2.setPhone("(112) 231-4111");
+        while (!input.equals("f"))
+        {
+            switch (input.charAt(0))
+            {
+                case 97:
+                    ab.init(Menu.prompt("Filename: "));
+                    break;
+                case 98:
+                    ab.add(
+                            new AddressEntry(
+                                    Menu.prompt_FirstName(),
+                                    Menu.prompt_LastName(),
+                                    Menu.prompt_Street(),
+                                    Menu.prompt_City(),
+                                    Menu.prompt_State(),
+                                    Menu.prompt_Zip(),
+                                    Menu.prompt_Email(),
+                                    Menu.prompt_Phone()
+                            )
+                    );
+                    break;
+                case 99:
+                    String name = Menu.prompt("Last Name to Remove: ");
+                    AddressEntry[] contacts = ab.find(name);
+                    for (int i=0; i<contacts.length; i++)
+                    {
+                        System.out.print(i+1);
+                        System.out.print(") ");
+                        System.out.println(contacts[i]);
+                    }
+                    Integer choice = Menu.promptInteger("Remove: ");
+                    if (choice < 1 || choice > contacts.length)
+                    {
+                        System.out.println("Invalid deletion choice.");
+                        break;
+                    }
+                    ab.remove(contacts[choice-1]);
+                    break;
+                case 100:
+                    String qname = Menu.prompt("Last name to search for: ");
+                    AddressEntry[] results = ab.find(qname);
+                    for (int i=0; i<results.length; i++)
+                    {
+                        System.out.print(i+1);
+                        System.out.print(") ");
+                        System.out.println(results[i]);
+                    }
+                    break;
+                case 101:
+                    System.out.println("\nListing all contacts.");
+                    ab.list();
+                    break;
+            }
 
-        ab.add(ae1);
-        ab.add(ae2);
+            input = Menu.displayMenu();
+        }
     }
 }

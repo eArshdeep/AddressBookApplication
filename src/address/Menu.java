@@ -11,23 +11,22 @@ import java.util.Scanner;
 **/
 public class Menu
 {
-    /** Private Scanner instance. */
-    private final Scanner scanner;
+    /** Scanner for IO. */
+    private static final Scanner scanner = new Scanner(System.in);
 
     /**
-     * Set up Menu by setting up scanner.
      * @author Arshdeep Padda
      * @since v0
     */
     Menu()
     {
-        this.scanner = new Scanner(System.in);
+
     }
 
     /**
      * Prompt user a query via stdio and return response.
      *
-     * Note: query is printed without implict newline.
+     * Note: query is printed without implicit newline.
      *
      * @param query - Query to prompt user.
      * @return String - User response.
@@ -35,10 +34,40 @@ public class Menu
      * @author Arshdeep Padda
      * @since v0
     */
-    public String prompt(String query)
+    static public String prompt(String query)
     {
         System.out.print(query);
-        return this.scanner.nextLine();
+        String in;
+        while ((in = scanner.nextLine()).equals(""))
+            System.out.print(query);
+        return in;
+    }
+
+    /**
+     * Prompt user for a integer given some prompt query.
+     *
+     * If input is not an integer, user is notifed as such
+     * and asked repetitively for valid input.
+     *
+     * @param query Prompt to print.
+     * @return Integer provided by user.
+     */
+    static public Integer promptInteger(String query)
+    {
+        boolean goodInput = false;
+        Integer integer = null;
+        while (!goodInput)
+        {
+            String in = prompt(query);
+            try {
+                integer = Integer.parseInt(in);
+                goodInput = true;
+            } catch (NumberFormatException nfe)
+            {
+                System.out.println("Input must be an integer");
+            }
+        }
+        return integer;
     }
 
     /**
@@ -48,7 +77,7 @@ public class Menu
      * @author Arshdeep Padda
      * @since v0
     */
-    public String prompt_FirstName()
+    public static String prompt_FirstName()
     {
         return prompt("First Name: ");
     }
@@ -60,7 +89,7 @@ public class Menu
      * @author Arshdeep Padda
      * @since v0
     */
-    public String prompt_LastName()
+    public static String prompt_LastName()
     {
         return prompt("Last Name: ");
     }
@@ -72,7 +101,7 @@ public class Menu
      * @author Arshdeep Padda
      * @since v0
     */
-    public String prompt_Street()
+    public static String prompt_Street()
     {
         return prompt("Street: ");
     }
@@ -84,7 +113,7 @@ public class Menu
      * @author Arshdeep Padda
      * @since v0
     */
-    public String prompt_City()
+    public static String prompt_City()
     {
         return prompt("City: ");
     }
@@ -96,21 +125,21 @@ public class Menu
      * @author Arshdeep Padda
      * @since v0
     */
-    public String prompt_State()
+    public static String prompt_State()
     {
         return prompt("State: ");
     }
 
     /**
-     * Prompt user for zip.
-     * @return String - User input.
+     * Prompt user for ZIP.
+     * @return Integer - User input.
      *
      * @author Arshdeep Padda
-     * @since v0
+     * @since v0.4
     */
-    public String prompt_Zip()
+    public static Integer prompt_Zip()
     {
-        return prompt("ZIP: ");
+        return promptInteger("ZIP: ");
     }
 
     /**
@@ -120,9 +149,9 @@ public class Menu
      * @author Arshdeep Padda
      * @since v0
     */
-    public String prompt_Telephone()
+    public static String prompt_Phone()
     {
-        return prompt("Telephone: ");
+        return prompt("Phone: ");
     }
 
     /**
@@ -132,8 +161,51 @@ public class Menu
      * @author Arshdeep Padda
      * @since v0
     */
-    public String prompt_Email()
+    public static String prompt_Email()
     {
         return prompt("Email: ");
+    }
+
+    /**
+     * printMenuChoices - Print menu choices.
+     *
+     * This is a purely print-only function.
+     *
+     * @author Arshdeep Padda
+     * @since v0.5
+     */
+    private static void printMenuChoices()
+    {
+        System.out.println("a) Load");
+        System.out.println("b) Add");
+        System.out.println("c) Remove");
+        System.out.println("d) Find");
+        System.out.println("e) List");
+        System.out.println("f) Quit");
+    }
+
+    /**
+     * Display Menu and return user choice.
+     *
+     * User choice is validated between [a,f].
+     *
+     * @return User choice.
+     *
+     * @author Arshdeep Padda
+     * @since v0.5
+     */
+    public static String displayMenu()
+    {
+        System.out.println("\nAddress Book Application");
+        printMenuChoices();
+
+        String choice = prompt("\nEnter: ");
+        while (choice.length() != 1 || choice.charAt(0) < 97 || choice.charAt(0) > 102)
+        {
+            System.out.println("\nPlease enter valid choice");
+            printMenuChoices();
+            choice = prompt("\nEnter: ");
+        }
+        return choice;
     }
 }
