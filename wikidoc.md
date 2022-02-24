@@ -92,7 +92,10 @@ Docs viewable [here](./docs/index.html).
 
 # Section E: Commit History
 
-Screenshot may be missing some final commits.
+Screenshot may be missing some final commits (e.g. final image addition).
+
+![Commit History 1](./assets/ch-1.png)
+![Commit History 2](./assets/ch-2.png)
 
 # Section F: Project Demonstration
 
