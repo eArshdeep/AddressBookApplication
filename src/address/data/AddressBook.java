@@ -82,9 +82,9 @@ public final class AddressBook
     }
 
     /**
+     * Remove AddressEntry from AddressEntry store.
      *
-     *
-     * @param address_entry
+     * @param address_entry AddressEntry to remove from store.
      *
      * @author Arshdeep Padda
      * @since v0.4
@@ -95,9 +95,9 @@ public final class AddressBook
     }
 
     /**
-     *
+     * Find contacts whose last name is or begins with specified prefix.
      * @param lastname Last name (whole or prefix) to search for.
-     * @return
+     * @return Array of AddressEntry's matching query.
      */
     public AddressEntry[] find(String lastname)
     {

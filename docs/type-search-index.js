@@ -1,1 +1,1 @@
-typeSearchIndex = [{"p":"address.data","l":"AddressBook"},{"p":"address","l":"AddressBookApplication"},{"p":"address.data","l":"AddressEntry"},{"l":"All Classes","u":"allclasses-index.html"},{"p":"address","l":"Menu"}];updateSearchResults();
+typeSearchIndex = [{"p":"address.data","l":"AddressBook"},{"p":"address","l":"AddressBookApplication"},{"p":"tests","l":"AddressBookTest"},{"p":"address.data","l":"AddressEntry"},{"p":"tests","l":"AddressEntryTest"},{"l":"All Classes","u":"allclasses-index.html"},{"p":"address","l":"Menu"}];updateSearchResults();
