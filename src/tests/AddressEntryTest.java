@@ -10,6 +10,7 @@ class AddressEntryTest
     @Test
     public void testEmptyConstructor()
     {
+        // Create empty AddressEntry and ensure all fields are null.
         AddressEntry ae = new AddressEntry();
         assertNull(ae.getFirstName());
         assertNull(ae.getLastName());
@@ -24,6 +25,7 @@ class AddressEntryTest
     @Test
     public void testParamConstructor()
     {
+        // Construct AE with all fields and test proper setting.
         AddressEntry ae = new AddressEntry(
                 "Bob",
                 "Marius",
@@ -42,11 +44,33 @@ class AddressEntryTest
         assertEquals(94500, ae.getZip());
         assertEquals("bmar@gmail.com", ae.getEmail());
         assertEquals("1234441222", ae.getPhone());
+
+        // Repeat.
+        ae = new AddressEntry(
+                "James",
+                "Maxwell",
+                "12 Jackson St.",
+                "Austin",
+                "TX",
+                18842,
+                "jmax@icloud.com",
+                "1315512313"
+        );
+        assertEquals("James", ae.getFirstName());
+        assertEquals("Maxwell", ae.getLastName());
+        assertEquals("12 Jackson St.", ae.getStreet());
+        assertEquals("Austin", ae.getCity());
+        assertEquals("TX", ae.getState());
+        assertEquals(18842, ae.getZip());
+        assertEquals("jmax@icloud.com", ae.getEmail());
+        assertEquals("1315512313", ae.getPhone());
     }
 
     @org.junit.jupiter.api.Test
     void getCopy()
     {
+        // Create Object, get copy, ensure proper data copy and
+        // unique (non-same) objects.
         AddressEntry org = new AddressEntry(
                 "Bob",
                 "Marius",
@@ -72,6 +96,7 @@ class AddressEntryTest
     @org.junit.jupiter.api.Test
     void testToString()
     {
+        // Ensure toString produces correct string.
         AddressEntry ae = new AddressEntry(
                 "Bob",
                 "Marius",
@@ -119,6 +144,8 @@ class AddressEntryTest
         );
         ae.setFirstName("Jackson");
         assertEquals("Jackson", ae.getFirstName());
+        ae.setFirstName("John");
+        assertEquals("John", ae.getFirstName());
     }
 
     @org.junit.jupiter.api.Test
@@ -152,6 +179,8 @@ class AddressEntryTest
         );
         ae.setLastName("Amper");
         assertEquals("Amper", ae.getLastName());
+        ae.setLastName("Verus");
+        assertEquals("Verus", ae.getLastName());
     }
 
     @org.junit.jupiter.api.Test
@@ -185,6 +214,8 @@ class AddressEntryTest
         );
         ae.setStreet("0 Technology Way");
         assertEquals("0 Technology Way", ae.getStreet());
+        ae.setStreet("1 Huntington Way");
+        assertEquals("1 Huntington Way", ae.getStreet());
     }
 
     @org.junit.jupiter.api.Test
@@ -218,6 +249,8 @@ class AddressEntryTest
         );
         ae.setCity("San Jose");
         assertEquals("San Jose", ae.getCity());
+        ae.setCity("Austin");
+        assertEquals("Austin", ae.getCity());
     }
 
     @org.junit.jupiter.api.Test
@@ -251,6 +284,8 @@ class AddressEntryTest
         );
         ae.setState("TX");
         assertEquals("TX", ae.getState());
+        ae.setState("ID");
+        assertEquals("ID", ae.getState());
     }
 
     @org.junit.jupiter.api.Test
@@ -284,6 +319,8 @@ class AddressEntryTest
         );
         ae.setZip(12311);
         assertEquals(12311, ae.getZip());
+        ae.setZip(94212);
+        assertEquals(94212, ae.getZip());
     }
 
     @org.junit.jupiter.api.Test
@@ -317,6 +354,8 @@ class AddressEntryTest
         );
         ae.setPhone("(511) 121-9912");
         assertEquals("(511) 121-9912", ae.getPhone());
+        ae.setPhone("1112223333");
+        assertEquals("1112223333", ae.getPhone());
     }
 
     @org.junit.jupiter.api.Test
@@ -350,5 +389,7 @@ class AddressEntryTest
         );
         ae.setEmail("bobmarius@icloud.com");
         assertEquals("bobmarius@icloud.com", ae.getEmail());
+        ae.setEmail("bobmarius2@icloud.com");
+        assertEquals("bobmarius2@icloud.com", ae.getEmail());
     }
 }
