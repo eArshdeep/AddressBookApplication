@@ -65,7 +65,7 @@ All systems functional, namely:
 
 # Section B: JavaDoc
 
-Docs viewable [here](./docs/index.html).
+Docs viewable [here](https://earshdeep.github.io/Padda_AddressBook/).
 
 # Section C: UML Design
 
